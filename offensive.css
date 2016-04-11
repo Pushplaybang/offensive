@@ -1,0 +1,24 @@
+/* CSS declarations go here */
+.error label {
+  color: #F66;
+}
+
+.error input,
+.error textarea,
+.error select {
+  border-color: #f66;
+}
+
+.error input:focus,
+.error textarea:focus {
+  border-color: #f66;
+  -webkit-box-shadow: 0 0 2px #f8b9b7;
+  -moz-box-shadow: 0 0 2px #f8b9b7;
+  box-shadow: 0 0 2px #f8b9b7;
+}
+
+.fieldErrors {
+  font-size: 80%;
+  line-height: 1.5rem;
+  color: #F66;
+}
