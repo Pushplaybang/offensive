@@ -12,7 +12,7 @@ Template.offensiveForm.onCreated(function() {
 
   /* setup a reactive context */
   self.autorun(function() {
-    // Offensive.resetErrors();
+    Offensive.resetErrors();
 
     /* Set the errors messsages on the errors object */
     context.invalidKeys().map(function(data) {
