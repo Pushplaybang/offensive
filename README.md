@@ -1,7 +1,7 @@
 # Offensive
 Simple client side validation for any form using collection2 in Meteor
 
-This module provides a simple way to display reactive validadtion errors on any old form on the client, against your collection2 schema. 
+This module provides a simple way to display reactive validadtion errors on any old form on the client, against your collection2 schema.
 
 
 
@@ -68,7 +68,7 @@ Offensive makes three blaze templates available to you.  The first is a required
     <p class="{{ offensiveClass field='description' contextName='topicForm' }}">
       <label for="desc">Topic description</label>
       <textarea name="desc" class="desc" placeholder="description"></textarea>
-     
+
       {{> offensiveField field='description' contextName="topicForm" }}
 
     </p>
@@ -112,6 +112,9 @@ Offensive.resetErrors();
 ## Dependancies
 You will require [aldeed:colection2](https://atmospherejs.com/aldeed/collection2)
 
+
+## ChangeLog
+* 0.0.2 -
 
 
 ## TODO

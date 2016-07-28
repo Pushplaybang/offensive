@@ -12,11 +12,11 @@ Template.offensiveForm.onCreated(function() {
 
   /* setup a reactive context */
   self.autorun(function() {
-    Offensive.resetErrors();
+    // Offensive.resetErrors();
 
     /* Set the errors messsages on the errors object */
     context.invalidKeys().map(function(data) {
-      key = self.data.contextName+'_'+data.name;
+      key = self.data.contextName + '_' + data.name;
       Offensive.errors.set(key, context.keyErrorMessage(data.name));
     });
 
@@ -26,7 +26,7 @@ Template.offensiveForm.onCreated(function() {
 /* Template Form Errors Primary Template */
 Template.offensiveForm.helpers({
   showErrorList: function() {
-    return this.list ? this.list : Offensive._settings.showButtons ||  false;
+    return this.list ? this.list : Offensive._settings.showButtons || false;
   },
   errors: function() {
     return _.keys(Offensive.errors.all()) || [];
