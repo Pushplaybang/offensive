@@ -1,83 +1,88 @@
 /* Setup the form errors */
-Template.offensiveForm.onCreated(function() {
-  var self = this, context, key;
-  var collection = Offensive.clientCollectionLookup(self.data.collection);
+Template.offensiveForm.onCreated(() => {
+  var instance = Template.instance();
+  // var collection = Offensive.clientCollectionLookup(self.data.collection);
+  const { collection, contextName } = instance.data;
+  const collectionInstance = Mongo.Collection.get(collection);
+  const context = collectionInstance.simpleSchema().namedContext(contextName);
+  let key;
 
   /* abort if no collection is specified */
-  if (!collection)
+  if (!collectionInstance) {
+    console.log('You need to add a collection argument to the form template');
     return false;
+  }
+
 
   /* save a reference to the validation context */
-  context = collection.simpleSchema().namedContext(self.data.contextName);
-
   /* setup a reactive context */
-  self.autorun(function() {
+  instance.autorun(() => {
     Offensive.resetErrors();
 
     /* Set the errors messsages on the errors object */
-    context.invalidKeys().map(function(data) {
-      key = self.data.contextName + '_' + data.name;
+    context.invalidKeys().map((data) => {
+      key = `${contextName}_${data.name}`;
       Offensive.errors.set(key, context.keyErrorMessage(data.name));
     });
-
   });
 });
 
 /* Template Form Errors Primary Template */
 Template.offensiveForm.helpers({
-  showErrorList: function() {
+  showErrorList() {
     return this.list ? this.list : Offensive._settings.showButtons || false;
   },
-  errors: function() {
+  errors() {
     return _.keys(Offensive.errors.all()) || [];
   }
 });
 
 /* the single errors that are show in the listing */
 Template.offensiveSingle.helpers({
-  message: function() {
-    if (this.key.indexOf(this.contextName) === -1)
+  message() {
+    if (this.key.indexOf(this.contextName) === -1) {
       return false;
+    }
 
     return Offensive.errors.get(this.key) || '';
   },
-  showButtons: function() {
+  showButtons() {
     return Offensive._settings.showButtons;
   },
-  buttonText: function() {
+  buttonText() {
     return Offensive._settings.buttonText;
   }
 });
 
 Template.offensiveSingle.events({
-  'click .remove': function(event, template) {
+  'click .remove'(event, template) {
     Offensive.errors.delete(this.key);
   }
 });
 
 /* The field error template  */
 Template.offensiveField.helpers({
-  message: function() {
+  message() {
     context = this.contextName ? this.contextName + '_' : '';
     return this.field ? Offensive.errors.get(context + this.field) : false;
   },
-  showButtons: function() {
+  showButtons() {
     return Offensive._settings.showButtons;
   },
-  buttonText: function() {
+  buttonText() {
     return Offensive._settings.buttonText;
   }
 });
 
 Template.offensiveField.events({
-  'click .remove': function(event, template) {
+  'click .remove'(event, template) {
     context = this.contextName ? this.contextName + '_' : '';
     Offensive.errors.delete(context + this.field);
   }
 });
 
 /* a global helper to apply an error class to the offending fields */
-Template.registerHelper('offensiveClass', function(key) {
+Template.registerHelper('offensiveClass', (key) => {
   var field = key ? key.hash && key.hash.field : '';
   var context = key ? key.hash && key.hash.contextName + '_' : '';
   return Offensive.errors.get(context + field) && 'error clarity-error';

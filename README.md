@@ -6,7 +6,7 @@ This module provides a simple way to display reactive validadtion errors on any 
 
 
 ## Install
-Simple install the package via atmosphere
+Simply install the package via atmosphere
 
 ```sh
 meteor add pushplaybang:offensive
@@ -27,7 +27,7 @@ Offensive makes three blaze templates available to you.  The first is a required
 
 **arguments :**
 
-* contextName (string) - the validation context
+* contextName (string) - the validation context, as set in your method
 * collection (string) - the collection we're validating against
 * list (Boolean) - whether to list the errors here or not (defaults to false)
 
@@ -114,13 +114,14 @@ You will require [aldeed:colection2](https://atmospherejs.com/aldeed/collection2
 
 
 ## ChangeLog
-* 0.0.2 -
+* 0.0.4 - Change to use dburles:mongo-collection-instances to get the collection
 
 
 ## TODO
 * Full form demo
 * Simple Schema support (excluding collection2)
 * Demo site
+* Convenience to Get errors in JS
 * Extend for react & angular
 
 
