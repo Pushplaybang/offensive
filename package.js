@@ -1,7 +1,7 @@
 /* eslint-disable */
 Package.describe({
   name: 'pushplaybang:offensive',
-  version: '0.0.4',
+  version: '0.0.5',
   summary: 'Simple client side validation for any form using collection2',
   git: '#',
   documentation: 'README.md'

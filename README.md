@@ -23,53 +23,53 @@ Offensive makes three blaze templates available to you.  The first is a required
 
 ##### offensiveForm (required)
 
-`{{> offensiveForm contextName='' collection='' list=false }}`
+`{{> offensiveForm context='' collection='' list=false }}`
 
 **arguments :**
 
-* contextName (string) - the validation context, as set in your method
+* context (string) - the validation context, as set in your method
 * collection (string) - the collection we're validating against
 * list (Boolean) - whether to list the errors here or not (defaults to false)
 
 ##### offensiveField
 
-`{{> offensiveField field='' contextName='' }}`
+`{{> offensiveField field='' context='' }}`
 
 **arguments :**
 
-* contextName (string) - the validation context
+* context (string) - the validation context
 * field (string) - the name of the field this should relate to
 
 ##### offensiveClass (global helper)
 
-`{{ offensiveClass field='' contextName='' }}`
+`{{ offensiveClass field='' context='' }}`
 
 **arguments :**
 
-* contextName (string) - the validation context
+* context (string) - the validation context
 * field (string) - the name of the field this should relate to
 
 ```html
 
 <template name="topicForm">
 
-  {{> offensiveForm contextName='topicForm' collection='Topics' list=false }}
+  {{> offensiveForm context='topicForm' collection='Topics' list=false }}
 
   <form id="topicform" class="topic-form">
 
-    <p class="{{ offensiveClass field='title' contextName='topicForm' }}">
+    <p class="{{ offensiveClass field='title' context='topicForm' }}">
       <label for="title">Topic Title</label>
       <input type="text" name="title" class="title" placeholder="title">
 
-      {{> offensiveField field='title' contextName='topicForm' }}
+      {{> offensiveField field='title' context='topicForm' }}
 
     </p>
 
-    <p class="{{ offensiveClass field='description' contextName='topicForm' }}">
+    <p class="{{ offensiveClass field='description' context='topicForm' }}">
       <label for="desc">Topic description</label>
       <textarea name="desc" class="desc" placeholder="description"></textarea>
 
-      {{> offensiveField field='description' contextName="topicForm" }}
+      {{> offensiveField field='description' context="topicForm" }}
 
     </p>
 
@@ -94,14 +94,6 @@ Topics.insert(doc, {
 });
 ```
 
-<!-- This doesn't exclude the ability to use simple-schema directly, but if you'e going to use simple schema and manually apply your validations then it looses some of its usefuleness. -->
-
-Note that the [official Meteor Guide](http://guide.meteor.com/methods.html) reccommends validating before any db interaction, using simple-schema, which is almost as simple as the collection 2 approach demonstrated, and will be supported soon.
-
-
-### Validating with Simple-Schema
-COMING SOON.
-
 ## Clearing Errors
 You can also clear the erros that have been set by calling the following method, this is usually neccessary on submission of the form you're validating.
 
@@ -114,6 +106,7 @@ You will require [aldeed:colection2](https://atmospherejs.com/aldeed/collection2
 
 
 ## ChangeLog
+* 0.0.5 - Rename contextName param to context and cleanup
 * 0.0.4 - Change to use dburles:mongo-collection-instances to get the collection
 
 
