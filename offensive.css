@@ -12,9 +12,9 @@
 .error input:focus,
 .error textarea:focus {
   border-color: #f66;
-  -webkit-box-shadow: 0 0 2px #f8b9b7;
-  -moz-box-shadow: 0 0 2px #f8b9b7;
-  box-shadow: 0 0 2px #f8b9b7;
+  -webkit-box-shadow: 0 0 1px #f8b9b7;
+  -moz-box-shadow: 0 0 1px #f8b9b7;
+  box-shadow: 0 0 1px #f8b9b7;
 }
 
 .fieldErrors {
