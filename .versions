@@ -42,7 +42,7 @@ observe-sequence@1.0.12
 ordered-dict@1.0.8
 promise@0.7.3
 pushplaybang:common-polyfills@0.0.1
-pushplaybang:offensive@0.0.4
+pushplaybang:offensive@0.0.5
 random@1.0.9
 reactive-dict@1.1.8
 reactive-var@1.0.10
