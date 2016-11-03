@@ -1,14 +1,16 @@
 <template name="offensiveForm">
     {{#if showErrorList}}
-      {{#each errors}}
-        {{> offensiveSingle contextName=../contextName collection=../collection key=this}}
-      {{/each}}
+      <div class="offensive-list">
+        {{#each errors}}
+          {{> offensiveSingle context=../context collection=../collection key=this}}
+        {{/each}}
+      </div>
     {{/if}}
 </template>
 
 <template name="offensiveSingle">
   {{#if message}}
-    <div class="offender formErrors {{../contextName}}">
+    <div class="offender formErrors {{../context}}">
       {{ message }}
       {{#if showButtons}}
         <button type="button" class="remove"><span>{{ buttonText }}</span></button>

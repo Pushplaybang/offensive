@@ -9,13 +9,25 @@ Offensive = {
   errors: new ReactiveDict(),
 
   /* perform setup */
-  init: function(userSettings) {
-    _.extend(this._settings, userSettings);
+  init(userSettings) {
+    _.extend(Offensive._settings, userSettings);
   },
 
   /* reset the errors */
-  resetErrors: function() {
-    Offensive.errors.clear();
+  resetErrors() {
+    return Offensive.errors.clear();
+  },
+
+  resetError(key) {
+    return Offensive.errors.delete(key);
+  },
+
+  resetFieldValidation(target, context) {
+    const { name } = target;
+    const key = `${context}_${name}`;
+
+    // call resetError
+    return Offensive.resetError(key);
   },
 };
 

@@ -95,17 +95,27 @@ Topics.insert(doc, {
 ```
 
 ## Clearing Errors
-You can also clear the erros that have been set by calling the following method, this is usually neccessary on submission of the form you're validating.
+You can also clear the errors that have been set by calling the following method, this is usually neccessary on submission of the form you're validating.
 
  ```js
 Offensive.resetErrors();
  ```
+
+ If you prefer to clear a single error, such as when updating a field that failed validation previously, use the following:
+
+ ```js
+ Offensive.resetFieldValidation(target, context);
+ ```
+The target, should equal the event.currentTarget and will use the name property, to establish which field it should clear the validation for.  Context is of course the validation context for the form.
+
 
 ## Dependancies
 You will require [aldeed:colection2](https://atmospherejs.com/aldeed/collection2)
 
 
 ## ChangeLog
+* 0.0.7 - Fixed error list display
+* 0.0.6 - Added resetFieldValidation function
 * 0.0.5 - Rename contextName param to context and cleanup
 * 0.0.4 - Change to use dburles:mongo-collection-instances to get the collection
 
