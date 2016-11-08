@@ -30,11 +30,9 @@ Template.offensiveForm.onCreated(() => {
 Template.offensiveForm.helpers({
   showErrorList() {
     const { list } = this;
-    console.log("list", list);
     return list || false;
   },
   errors() {
-    console.log("_.keys(Offensive.errors.all())", _.keys(Offensive.errors.all()));
     return _.keys(Offensive.errors.all()) || [];
   }
 });
